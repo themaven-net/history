@@ -9,6 +9,7 @@ import pkg from './package.json';
 
 const input = './modules/index.js';
 const globalName = 'History';
+const packageName = 'history'
 
 function external(id) {
   return !id.startsWith('.') && !id.startsWith('/');
@@ -17,7 +18,7 @@ function external(id) {
 const cjs = [
   {
     input,
-    output: { file: `cjs/${pkg.name}.js`, format: 'cjs' },
+    output: { file: `cjs/${packageName}.js`, format: 'cjs' },
     external,
     plugins: [
       babel({ exclude: /node_modules/ }),
@@ -26,7 +27,7 @@ const cjs = [
   },
   {
     input,
-    output: { file: `cjs/${pkg.name}.min.js`, format: 'cjs' },
+    output: { file: `cjs/${packageName}.min.js`, format: 'cjs' },
     external,
     plugins: [
       babel({ exclude: /node_modules/ }),
@@ -39,7 +40,7 @@ const cjs = [
 const esm = [
   {
     input,
-    output: { file: `esm/${pkg.name}.js`, format: 'esm' },
+    output: { file: `esm/${packageName}.js`, format: 'esm' },
     external,
     plugins: [
       babel({
@@ -55,7 +56,7 @@ const esm = [
 const umd = [
   {
     input,
-    output: { file: `umd/${pkg.name}.js`, format: 'umd', name: globalName },
+    output: { file: `umd/${packageName}.js`, format: 'umd', name: globalName },
     plugins: [
       babel({
         exclude: /node_modules/,
@@ -70,7 +71,7 @@ const umd = [
   },
   {
     input,
-    output: { file: `umd/${pkg.name}.min.js`, format: 'umd', name: globalName },
+    output: { file: `umd/${packageName}.min.js`, format: 'umd', name: globalName },
     plugins: [
       babel({
         exclude: /node_modules/,

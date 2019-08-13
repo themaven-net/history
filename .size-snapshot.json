@@ -1,8 +1,8 @@
 {
   "esm/history.js": {
-    "bundled": 28364,
-    "minified": 12515,
-    "gzipped": 3683,
+    "bundled": 28449,
+    "minified": 12453,
+    "gzipped": 3633,
     "treeshaked": {
       "rollup": {
         "code": 208,
@@ -14,13 +14,37 @@
     }
   },
   "umd/history.js": {
-    "bundled": 33174,
-    "minified": 12021,
-    "gzipped": 3992
+    "bundled": 33408,
+    "minified": 12043,
+    "gzipped": 4074
   },
   "umd/history.min.js": {
-    "bundled": 30690,
-    "minified": 10155,
-    "gzipped": 3616
+    "bundled": 30771,
+    "minified": 10093,
+    "gzipped": 3566
+  },
+  "esm/@maven-io/history.js": {
+    "bundled": 28339,
+    "minified": 12421,
+    "gzipped": 3619,
+    "treeshaked": {
+      "rollup": {
+        "code": 208,
+        "import_statements": 132
+      },
+      "webpack": {
+        "code": 1324
+      }
+    }
+  },
+  "umd/@maven-io/history.js": {
+    "bundled": 33290,
+    "minified": 12011,
+    "gzipped": 4058
+  },
+  "umd/@maven-io/history.min.js": {
+    "bundled": 30653,
+    "minified": 10061,
+    "gzipped": 3550
   }
 }

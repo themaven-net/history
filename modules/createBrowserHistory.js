@@ -41,13 +41,13 @@ function createBrowserHistory(props = {}) {
   const globalHistory = window.history;
   const canUseHistory = supportsHistory();
   const needsHashChangeListener = !supportsPopStateOnHashChange();
-
   const {
     forceRefresh = false,
     getUserConfirmation = getConfirmation,
     keyLength = 6
   } = props;
-  const basename = props.basename
+  const { useBasenameInCreateHref = false } = props
+  let basename = props.basename
     ? stripTrailingSlash(addLeadingSlash(props.basename))
     : '';
 
@@ -149,7 +149,11 @@ function createBrowserHistory(props = {}) {
   // Public interface
 
   function createHref(location) {
-    return basename + createPath(location);
+    return (useBasenameInCreateHref ? basename : '') + createPath(location)
+  }
+
+  function changeBaseName(newBasename) {
+    basename = newBasename
   }
 
   function push(path, state) {
@@ -324,7 +328,8 @@ function createBrowserHistory(props = {}) {
     goBack,
     goForward,
     block,
-    listen
+    listen,
+    changeBaseName,
   };
 
   return history;
