@@ -44,7 +44,8 @@ function createBrowserHistory(props = {}) {
   const {
     forceRefresh = false,
     getUserConfirmation = getConfirmation,
-    keyLength = 6
+    keyLength = 6,
+    prePopCheck,
   } = props;
   const { useBasenameInCreateHref = false } = props
   let basename = props.basename
@@ -103,20 +104,24 @@ function createBrowserHistory(props = {}) {
       forceNextPop = false;
       setState();
     } else {
-      const action = 'POP';
-
-      transitionManager.confirmTransitionTo(
-        location,
-        action,
-        getUserConfirmation,
-        ok => {
+      var action = 'POP';
+      const precheckPassed = function() {
+        transitionManager.confirmTransitionTo(location, action, getUserConfirmation, function transitionHandler(ok) {
           if (ok) {
-            setState({ action, location });
+            setState({
+              action: action,
+              location: location
+            });
           } else {
             revertPop(location);
           }
-        }
-      );
+        });
+      }
+      if (prePopCheck) {
+        prePropCheck(location, action).then(precheckPassed).catch(() => revertPop(location))
+      } else {
+        precheckPassed()
+      }
     }
   }
 
