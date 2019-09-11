@@ -118,7 +118,7 @@ function createBrowserHistory(props = {}) {
         });
       }
       if (prePopCheck) {
-        prePropCheck(location, action).then(precheckPassed).catch(() => revertPop(location))
+        prePopCheck(location, action).then(precheckPassed).catch(() => revertPop(location))
       } else {
         precheckPassed()
       }
