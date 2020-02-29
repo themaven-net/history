@@ -1,8 +1,14 @@
 {
-  "name": "@maven-io/history",
-  "version": "4.10.5",
+  "name": "@themaven-net/history",
+  "version": "4.11.0",
   "description": "Manage session history with JavaScript",
-  "repository": "ReactTraining/history",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/themaven-net/history.git"
+  },
+  "publishConfig": {
+    "registry": "https://npm.pkg.github.com/"
+  },
   "license": "MIT",
   "author": "Michael Jackson",
   "main": "index.js",
